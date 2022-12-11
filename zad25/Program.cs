@@ -22,13 +22,17 @@ int GetNumber(string message)
 }
 
 //Метод расчета числа А в степени В циклом
-int ResOfPow(int numberA, int numberB)
+double ResOfPow(int numberA, int numberB)
 {
-    int result=1;
-    for(int i=0;i<numberB;i++) result*=numberA;
+    double result = 1;
+    if (numberB >= 0)
+    {
+        for (int i = 0; i < numberB; i++) result *= numberA;
+    }
+    else for (int i = 0; i < Math.Abs(numberB); i++) result *= (1 / (double)numberA);
     return result;
 }
 
-int numA = GetNumber("Введите натуральное число A: ");
-int numB = GetNumber("Введите натуральное число B: ");
-Console.WriteLine($"\nЧисло {numA} в степени {numB} = {ResOfPow(numA,numB)}");
+int numA = GetNumber("Введите целое число A: ");
+int numB = GetNumber("Введите целое число B: ");
+Console.WriteLine($"\nЧисло {numA} в степени {numB} = {ResOfPow(numA, numB)}");
